@@ -1,0 +1,365 @@
+@import "tailwindcss";
+@import url("https://fonts.cdnfonts.com/css/general-sans");
+
+/* Root Variables */
+:root {
+  --background-color: #dfdff0;
+  --border-color: rgba(255, 255, 255, 0.2);
+  --primary-text-color: white;
+  --accent-color: #5d3fd3;
+  --transition-ease: cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--background-color);
+  font-family: "General Sans", sans-serif;
+}
+
+/* Custom Fonts */
+@font-face {
+  font-family: "circular-web";
+  src: url("/fonts/circularweb-book.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "general";
+  src: url("/fonts/general.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "robert-medium";
+  src: url("/fonts/robert-medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "robert-regular";
+  src: url("/fonts/robert-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "zentry";
+  src: url("/fonts/zentry-regular.woff2") format("woff2");
+}
+
+/* Utility Classes */
+.border-hsla {
+  border: 1px solid var(--border-color);
+}
+
+.nav-hover-btn {
+  position: relative;
+  margin-left: 2.5rem;
+  font-family: "general", sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #f0f8ff;
+  cursor: pointer;
+}
+
+.nav-hover-btn::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(224, 215, 215);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s var(--transition-ease);
+}
+
+.nav-hover-btn:hover::after {
+  transform-origin: bottom left;
+  transform: scaleX(1);
+}
+
+.floating-nav {
+  background-color: black;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Text Styles */
+.special-font b {
+  font-family: "Zentry";
+  font-feature-settings: "ss01" on;
+}
+
+.hero-heading {
+  text-transform: uppercase;
+  font-family: "zentry", sans-serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 12vw, 12rem);
+}
+
+.about-subtext {
+  position: absolute;
+  bottom: -80vh;
+  left: 50%;
+  width: 100%;
+  max-width: 34rem;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: "circular-web", sans-serif;
+  font-size: 1.125rem;
+}
+
+.animated-word {
+  font-family: "zentry", sans-serif; /* Replacing font-zentry */
+  font-weight: 900; /* Equivalent to font-black */
+  opacity: 0; /* Equivalent to opacity-0 */
+
+  transform: translate3d(10px, 51px, -60px) rotateY(60deg) rotateX(-40deg);
+  transform-origin: 50% 50% -150px !important;
+  will-change: opacity, transform;
+}
+
+.animated-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem; /* Equivalent to gap-1 */
+  font-size: 4.5rem; /* Equivalent to text-7xl */
+  text-transform: uppercase;
+  line-height: 0.8; /* Equivalent to leading-[.8] */
+  color: white;
+  padding-left: 8rem; /* Equivalent to sm:px-32 */
+  padding-right: 8rem;
+}
+
+/* Image & Animation */
+.about-image {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  z-index: 20;
+  height: 60vh;
+  width: 30vw;
+  transform: translateX(-50%);
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+/* Animations */
+.indicator-line {
+  height: 4px;
+  width: 1px;
+  background-color: var(--primary-text-color);
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+}
+
+.indicator-line.active {
+  animation: indicator-line 0.5s ease infinite;
+}
+
+@keyframes indicator-line {
+  0%,
+  100% {
+    height: 4px;
+    transform: translateY(0);
+  }
+  50% {
+    height: 16px;
+    transform: translateY(-4px);
+  }
+}
+
+/* Bento Grid Layout */
+.bento-tilt_1,
+.bento-tilt_2 {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.3s ease-out;
+}
+
+.bento-tilt_1 {
+  border: 1px solid var(--border-color);
+}
+
+.bento-title {
+  text-transform: uppercase;
+  font-size: clamp(2rem, 5vw, 6rem);
+  font-weight: 900;
+  font-family: "zentry", sans-serif;
+}
+
+/* Gallery */
+.gallery-img-container {
+  width: 16rem;
+  height: 16rem;
+  overflow: hidden;
+  background-color: #d9b3ff;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.gallery-img-4 {
+  width: 25rem;
+  height: 24rem;
+  border-radius: 10px;
+}
+
+/* Clipping Masks */
+.sword-man-clip-path {
+  clip-path: polygon(16% 0, 89% 15%, 75% 100%, 0 97%);
+}
+
+.contact-clip-path-1 {
+  clip-path: polygon(25% 0%, 74% 0, 69% 64%, 34% 73%);
+}
+
+.contact-clip-path-2 {
+  clip-path: polygon(29% 15%, 85% 30%, 50% 100%, 10% 64%);
+}
+
+/* Loader Animation */
+.three-body {
+  --size: 35px;
+  --speed: 0.8s;
+  --color: var(--accent-color);
+  position: relative;
+  display: inline-block;
+  height: var(--size);
+  width: var(--size);
+  animation: spin 2s infinite linear;
+}
+
+.three-body__dot {
+  position: absolute;
+  width: 30%;
+  height: 100%;
+}
+
+.three-body__dot::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  padding-bottom: 100%;
+  background-color: var(--color);
+  border-radius: 50%;
+}
+
+.three-body__dot:nth-child(1) {
+  bottom: 5%;
+  left: 0;
+  transform: rotate(60deg);
+}
+
+.three-body__dot:nth-child(1)::after {
+  animation: wobble 0.8s infinite ease-in-out;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wobble {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-66%) scale(0.65);
+    opacity: 0.8;
+  }
+}
+
+.story-img-container {
+  position: relative; /* Equivalent to @apply relative */
+  height: 90vh; /* Equivalent to h-[90vh] */
+  width: 100%; /* Equivalent to w-full */
+
+  /* Responsive height */
+  @media (min-width: 768px) {
+    /* md breakpoint */
+    height: 100dvh; /* Equivalent to md:h-dvh */
+  }
+
+  filter: url("#flt_tag");
+}
+
+.story-img-mask {
+  position: absolute; /* Equivalent to @apply absolute */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  /* Clip path */
+  clip-path: polygon(4% 0, 83% 21%, 100% 73%, 0% 100%);
+
+  /* Responsive styles */
+  @media (min-width: 768px) {
+    /* md breakpoint */
+    left: 20%; /* Equivalent to md:left-[20%] */
+    top: -10%; /* Equivalent to md:top-[-10%] */
+    width: 80%; /* Equivalent to md:size-4/5 */
+    height: 80%;
+  }
+}
+
+.story-img-content {
+  position: absolute; /* Equivalent to @apply absolute */
+  width: 100%; /* Equivalent to @apply w-full */
+  height: 50dvh; /* Equivalent to h-[50dvh] */
+  opacity: 1; /* Equivalent to opacity-100 */
+  left: 10px; /* Equivalent to left-10 */
+  top: 16px; /* Equivalent to top-16 */
+
+  /* Responsive styles */
+  @media (min-width: 768px) {
+    /* md breakpoint */
+    height: 100dvh; /* Equivalent to md:h-dvh */
+    left: 0; /* Equivalent to md:left-0 */
+    top: 10px; /* Equivalent to md:top-10 */
+  }
+
+  @media (min-width: 1024px) {
+    /* lg breakpoint */
+    left: -300px; /* Equivalent to lg:left-[-300px] */
+    top: -100px; /* Equivalent to lg:top-[-100px] */
+  }
+
+  /* Transformations */
+  transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0) scale(1);
+}
+
+.contact-clip-path-1 {
+  clip-path: polygon(25% 0%, 74% 0, 69% 64%, 34% 73%);
+}
+
+.contact-clip-path-2 {
+  clip-path: polygon(29% 15%, 85% 30%, 50% 100%, 10% 64%);
+}
+
+.sword-man-clip-path {
+  clip-path: polygon(16% 0, 89% 15%, 75% 100%, 0 97%);
+}
